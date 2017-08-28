@@ -2,15 +2,11 @@ window.addEventListener('load', function () {
 
 	var loadDone = function(event){
 		var request = event.target;
-		addText = request.response;
-		
-		var text = document.createTextNode(addText);
+		var added = request.response;
 
-		newElement.appendChild(text);
-
-		body.appendChild(newElement);
-
-
+		var addText = JSON.parse(added)
+	
+		return addText;
 
 	}
 
@@ -18,13 +14,21 @@ window.addEventListener('load', function () {
 		var request = new XMLHttpRequest();
 		request.open("GET", "http://localhost:4567/people");
 		request.send();
-		request.addEventListener('load', loadDone);
+		var here = request.addEventListener('load', loadDone);
+		return here;
 	}
 	
 	var body = document.querySelector('body');
 
 	var newElement = document.createElement("div");
 
-	getText();
+	var final = getText();
 
+	for (var i = final.length - 1; i >= 0; i--) {
+			var text = document.createTextNode(final[i].fname + " " + final[i].lname + " ");
+
+			newElement.appendChild(text);
+
+			body.appendChild(newElement);
+		}
 });
