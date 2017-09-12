@@ -31,6 +31,7 @@ window.addEventListener('load', function () {
 			var name = document.createTextNode(info[i].fname + " " + info[i].lname + "\n");
 			var address = document.createTextNode(info[i].address+ " " + info[i].city + " " + info[i].state + " " + info[i].zip + "\n");
 			var phone = document.createTextNode(info[i].tel);
+			debugger
 			var innerbody = document.createElement("div")
 			body.appendChild(innerbody)
 			innerbody.appendChild(nameElement);
